@@ -59,7 +59,22 @@ npm test
 - `career_audit`：空库返回 0 findings，报告写入 `_meta/audit/last.json`；
 - 客户端 bundle 已进入 web 启动清单（`plugins/??…,dsh-career-kb/client.js,…`），刷新页面后出现侧栏入口与 `/career*` 命令。
 
-## 4. 安全与边界
+## 4. 从 GitHub 安装验证
+
+用一个全新的空 profile 执行真实安装命令：
+
+```sh
+dsh plugin --profile careerkbgh add github:ljttt0824/dsh-career-kb
+# + dsh-career-kb 1.0.0 — Done in 4.1s
+```
+
+再启动该 profile（端口 62552）：
+
+- `/api/career-kb/health` → `ok=true`；
+- `/api/career-kb/state` → `skills=9`，六大模块就绪；
+- 说明仓库里的 `package.json`（`dsh.bundle` + `dsh.client`）与 `cordis.patch.yml` 能按市场安装路径正确组合。
+
+## 5. 安全与边界
 
 - 所有路径经 `resolveInside` 校验，拒绝逃逸出 vault；
 - 删除/合并/移动/归档先备份；`career_apply` 需 `confirm=true`；
@@ -67,7 +82,7 @@ npm test
 - 仓库不含个人数据：`examples/`、`templates/`、`scripts/seed-demo.mjs` 全部为虚构示例；
 - 飞书写入完全委托 `feishu_*` 工具。本次验证**没有向用户真实飞书空间写入测试文档**，避免污染；飞书链路通过工具探测 + 技能提示词对照验证。
 
-## 5. 已知限制
+## 6. 已知限制
 
 - `browser-verify.mjs` 依赖 Edge/Chrome 的 CDP 端口；不同机器需改 `cdpBase`。
 - 近似重复/冗余使用 shingle Jaccard 与包含度，阈值（0.6 / 0.72 / 0.94）偏保守，长文可能漏检；巡检结果仍建议人工确认。

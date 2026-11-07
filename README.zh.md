@@ -99,7 +99,8 @@ node test/browser-verify.mjs <appUrl> <cdpBase> [panelPng] [capturePng]   # 浏�
 
 - 单元 / 集成 17/17 通过；
 - 隔离 profile + Edge headless 浏览器端 16/16 通过（面板、巡检、选中文字浮动按钮、右键菜单、存入服务端）；
-- 真实 profile 热加载成功（未重启桌面端），`career_status` 识别到 7 个飞书工具，`career_verify` 7 项全绿。
+- 真实 profile 热加载成功（未重启桌面端），`career_status` 识别到 7 个飞书工具，`career_verify` 7 项全绿；
+- 空 profile 执行 `dsh plugin add github:ljttt0824/dsh-career-kb` 后启动验证通过（9 个技能、健康检查 ok）。
 
 详细结果与截图见 [docs/VERIFICATION.md](docs/VERIFICATION.md)。
 
