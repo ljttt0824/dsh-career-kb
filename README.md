@@ -1,6 +1,6 @@
 # dsh-career-kb
 
-DeepSeek Harness plugin for a personal career knowledge base: an Obsidian-compatible vault with six career modules, a capture inbox, and nine agent skills — setup, capture, full-vault audit, JD-tailored resume, interview prep, interview review, search, JD decode and weekly review.
+DeepSeek Harness plugin for a personal career knowledge base: an Obsidian-compatible vault with six career modules, a capture inbox, and ten agent skills — setup, capture, import, full-vault audit, JD-tailored resume, interview prep, interview review, search, JD decode and weekly review.
 
 ## Highlights
 

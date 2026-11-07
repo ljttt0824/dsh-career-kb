@@ -2,12 +2,13 @@
 
 > DeepSeek Harness 插件版：把「智能职业生涯知识库 Skill」升级成一个装进 DSH、能和飞书插件配合使用的职业档案工作台。
 
-它在本机维护一个 Obsidian 可打开的 Markdown 知识库（六大模块 + 收件箱 + 元数据），并用 9 个技能把日常动作串起来：
+它在本机维护一个 Obsidian 可打开的 Markdown 知识库（六大模块 + 收件箱 + 元数据），并用 10 个技能把日常动作串起来：
 
 | 技能 | 斜杠命令 | 做什么 |
 | --- | --- | --- |
 | 搭建知识库 | `/career-setup` | 访谈式建档：个人画像、职业规划、首页索引 |
 | 存入与整理 | `/career-save` | 社媒/网页/截图/选中文字 → 可学习、可复习、可复用的知识卡；查重、分类、同步飞书 |
+| 导入已有知识库 | `/career-import` | 把飞书知识库、云文档或本地目录里已有的职业资料按六大模块导入，保留原文与来源 |
 | 全库整理巡检 | `/career-audit` | 扫描重复、冗余、过时、冲突、归类错误、无来源、断链、孤立记录；**确认后**才移动/合并/归档/删除 |
 | JD 定向简历 | `/career-resume` | 按 JD 检索项目/技能/实习/历史简历，输出证据矩阵 + 不造假的简历 |
 | 面试准备 | `/career-prep` | JD + 个人经历 + 联网面经：自我介绍、复习清单、八股/常规/项目深挖/情景题、模拟面试 |
@@ -100,7 +101,7 @@ node test/browser-verify.mjs <appUrl> <cdpBase> [panelPng] [capturePng]   # 浏�
 - 单元 / 集成 17/17 通过；
 - 隔离 profile + Edge headless 浏览器端 16/16 通过（面板、巡检、选中文字浮动按钮、右键菜单、存入服务端）；
 - 真实 profile 热加载成功（未重启桌面端），`career_status` 识别到 7 个飞书工具，`career_verify` 7 项全绿；
-- 空 profile 执行 `dsh plugin add github:ljttt0824/dsh-career-kb` 后启动验证通过（9 个技能、健康检查 ok）。
+- 空 profile 执行 `dsh plugin add github:ljttt0824/dsh-career-kb` 后启动验证通过（10 个技能、健康检查 ok）。
 
 详细结果与截图见 [docs/VERIFICATION.md](docs/VERIFICATION.md)。
 

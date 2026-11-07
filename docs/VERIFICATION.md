@@ -12,9 +12,9 @@ npm test
 | 文件 | 覆盖 |
 | --- | --- |
 | `test/core.test.mjs` | 目录布局、frontmatter、存入、检索、巡检 8 类问题、确认后合并/移动/删除 + 备份、自检 |
-| `test/host.test.mjs` | 10 个工具、10 个 `/career*` 命令、系统提示、HTTP 路由、飞书工具探测、命令引导 Agent |
+| `test/host.test.mjs` | 10 个工具、11 个 `/career*` 命令、系统提示、HTTP 路由、飞书工具探测、命令引导 Agent |
 | `test/client.test.mjs` | 浏览器端模块加载、样式注入、3 个 slot 注册、选中文字浮动按钮、右键菜单、POST 载荷 |
-| `test/interop.test.mjs` | 9 个技能 SOP 完整性、模板/示例脱敏检查、与已装 `dsh-feishu` 工具名精确对照 |
+| `test/interop.test.mjs` | 10 个技能 SOP 完整性、模板/示例脱敏检查、与已装 `dsh-feishu` 工具名精确对照 |
 
 关键断言：
 
@@ -54,7 +54,7 @@ npm test
 
 - `GET http://127.0.0.1:62490/api/career-kb/health` → `{"ok":true,"plugin":"dsh-career-kb","dataDir":"C:\\Users\\ljt\\.dsh\\storages\\career-kb"}`，**运行中的桌面端直接热加载成功，无需重启**；
 - 系统提示中出现 `tool:career-kb` 技能段；
-- `career_status`：6 个模块、9 个技能、飞书探测 `available=true`，识别到 `feishu_doc / feishu_wiki / feishu_drive / feishu_sheet / feishu_bitable / feishu_query / feishu_message`；
+- `career_status`：6 个模块、10 个技能、飞书探测 `available=true`，识别到 `feishu_doc / feishu_wiki / feishu_drive / feishu_sheet / feishu_bitable / feishu_query / feishu_message`；
 - `career_verify`：目录结构、记录解析、ID 唯一、链接、index、收件箱、备份 7 项全部 `ok=true`；
 - `career_audit`：空库返回 0 findings，报告写入 `_meta/audit/last.json`；
 - 客户端 bundle 已进入 web 启动清单（`plugins/??…,dsh-career-kb/client.js,…`），刷新页面后出现侧栏入口与 `/career*` 命令。
@@ -71,7 +71,7 @@ dsh plugin --profile careerkbgh add github:ljttt0824/dsh-career-kb
 再启动该 profile（端口 62552）：
 
 - `/api/career-kb/health` → `ok=true`；
-- `/api/career-kb/state` → `skills=9`，六大模块就绪；
+- `/api/career-kb/state` → `skills=10`，六大模块就绪；
 - 说明仓库里的 `package.json`（`dsh.bundle` + `dsh.client`）与 `cordis.patch.yml` 能按市场安装路径正确组合。
 
 ## 5. 安全与边界

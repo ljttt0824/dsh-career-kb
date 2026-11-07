@@ -95,7 +95,7 @@ test('host registers tools, commands, prompt section and routes', async () => {
 
   const expectedTools = ['career_status', 'career_index', 'career_read', 'career_search', 'career_save', 'career_audit', 'career_apply', 'career_verify', 'career_reindex', 'career_skill']
   for (const name of expectedTools) assert.ok(tools.has(name), `缺少工具 ${name}`)
-  assert.equal(commands.size, 10, [...commands.keys()].join(','))
+  assert.equal(commands.size, 11, [...commands.keys()].join(','))
   assert.ok(sections.some((section) => /职业生涯知识库/.test(section.text)))
   assert.ok(routes.some((route) => route.path === '/api/career-kb/state'))
   await cleanup(dir)
