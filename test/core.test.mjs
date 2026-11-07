@@ -188,6 +188,35 @@ test('verify reports structure, ids, links and index status', async () => {
   await cleanup(dir)
 })
 
+test('imported archives get no keyword-only module suggestions', async () => {
+  const dir = await makeVault()
+  const body = '# 面试题库\n\n' + [
+    'RAG 是什么？知识库检索、Prompt、Agent、评测、上下文工程都是常问内容。',
+    '学习方法、知识框架、技能复习、八股、项目管理 PMO、复盘方法。',
+  ].join('\n').repeat(20)
+  await writeCard(dir, '02-求职与实习/面试准备与题库/面试题库.md', {
+    id: 'i1', title: 'AI产品经理面试题库', type: '面试准备', module: '02',
+    source: '飞书知识库（源空间）', body,
+  })
+  const report = await auditVault(dir)
+  const hits = report.findings.filter((finding) => finding.kind === 'misclassified')
+  assert.equal(hits.length, 0, JSON.stringify(hits.map((f) => f.title)))
+  await cleanup(dir)
+})
+
+test('type/module mismatch is still flagged for imported archives', async () => {
+  const dir = await makeVault()
+  await writeCard(dir, '03-能力建设与学习/学习笔记/misplaced.md', {
+    id: 'm1', title: '某公司面试准备', type: '面试准备', module: '03',
+    source: '飞书知识库（源空间）', body: '# 某公司面试准备\n\n面试题库与自我介绍。',
+  })
+  const report = await auditVault(dir)
+  const hit = report.findings.find((finding) => finding.kind === 'misclassified' && finding.evidence.startsWith('type='))
+  assert.ok(hit !== undefined, '应报告类型与模块不一致')
+  assert.match(hit.title, /类型与模块不一致/)
+  await cleanup(dir)
+})
+
 async function cleanup(dir) {
   await new Promise((resolve) => setTimeout(resolve, 30))
   await fs.rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 60 }).catch(() => {})
