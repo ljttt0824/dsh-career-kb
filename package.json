@@ -1,0 +1,66 @@
+{
+  "name": "dsh-career-kb",
+  "version": "1.0.0",
+  "description": "职业生涯知识库插件：本地 Obsidian 风格职业档案 + 整理巡检 + JD 简历 + 面试准备/复盘 + 社媒存入，深度对接 dsh-feishu 飞书工具。Career knowledge base plugin for DeepSeek Harness with audit, resume, interview prep/review and Feishu interop.",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/core.js",
+    "lib/skills.js",
+    "lib/client.js",
+    "skills/*.md",
+    "templates/*.md",
+    "examples/*.md",
+    "docs/*.md",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/core.test.mjs test/host.test.mjs test/client.test.mjs test/interop.test.mjs",
+    "check": "node --check lib/index.js && node --check lib/core.js && node --check lib/client.js && node --check lib/skills.js",
+    "verify": "node test/run-all.mjs"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "career",
+    "resume",
+    "interview",
+    "knowledge-base",
+    "obsidian",
+    "feishu",
+    "agent-skills"
+  ],
+  "engines": {
+    "dsh": ">=0.2.1-rc.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-chat"
+      ],
+      "platform": "web"
+    },
+    "manifestVersion": 1
+  },
+  "license": "MIT"
+}
