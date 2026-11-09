@@ -89,10 +89,12 @@ dsh plugin --profile <profile> add /path/to/dsh-career-kb
 
 桌面端也可以在 **设置 → 插件** 里添加本仓库。装好后刷新页面：侧边栏出现「职业生涯」入口，输入框 `/` 能看到 `/career*` 命令。
 
+设计文档：[docs/DESIGN.md](docs/DESIGN.md)（问题定义、分层架构、巡检规则、变更与备份、飞书边界、成本与限制）。
+
 ## 自验
 
 ```sh
-npm test                 # 17 项：core / host / client / feishu 对接
+npm test                 # 19 项：core / host / client / feishu 对接
 node test/browser-verify.mjs <appUrl> <cdpBase> [panelPng] [capturePng]   # 浏览器端 16 项
 ```
 

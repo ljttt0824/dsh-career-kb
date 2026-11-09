@@ -29,6 +29,8 @@ dsh plugin --profile <profile> add github:ljttt0824/dsh-career-kb
 
 Refresh the page: a “职业生涯” sidebar entry and `/career*` commands appear.
 
+Design: [docs/DESIGN.md](docs/DESIGN.md) (problem framing, layers, audit rules, mutation/backup model, Feishu boundary, cost, limits).
+
 ## Verify
 
 ```sh

@@ -1,6 +1,6 @@
 {
   "name": "dsh-career-kb",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "职业生涯知识库插件：本地 Obsidian 风格职业档案 + 整理巡检 + JD 简历 + 面试准备/复盘 + 社媒存入，深度对接 dsh-feishu 飞书工具。Career knowledge base plugin for DeepSeek Harness with audit, resume, interview prep/review and Feishu interop.",
   "type": "module",
   "main": "lib/index.js",
